@@ -1,0 +1,25 @@
+name: CI pipeline
+on:
+  push:
+    branches: ["main"]
+jobs:
+  build-stage:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+      - uses: actions/checkout@v6.0.2
+      - name: Setup Node.js environment
+      - uses: actions/setup-node@v6.4.0
+        with:
+          node-version: 18
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Upload a Build Artifact
+      - uses: actions/upload-artifact@v7.0.1
+        with:
+          name: build-artifacts
+          path: dist
+          
+       
+          
