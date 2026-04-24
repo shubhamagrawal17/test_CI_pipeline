@@ -52,7 +52,8 @@ jobs:
       uses: Azure/webapps-deploy@v3.0.7
       with:
         app-name: demoapp211
-        publish-profile: 
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
+        package: .
       
         
     
