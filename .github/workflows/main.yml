@@ -13,6 +13,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+      - run: mv node_modules build_artifacts
+      - run: cp package.json build_artifacts
       - uses: actions/upload-artifact@v7.0.1
         with:
           name: artifacts
