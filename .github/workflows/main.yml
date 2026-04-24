@@ -1,7 +1,7 @@
 name: CI Pipeline Demo
-on:  workflow_dispatch
-  #push:
-    #branches: ["main"]
+on: 
+  push:
+    branches: ["main"]
 jobs:
   build-job:
     runs-on: ubuntu-22.04
@@ -43,19 +43,7 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm run lint
-  deploy-job:
-    runs-on: ubuntu-22.04
-    needs: lint-job
-    steps:
-      - uses: actions/download-artifact@v7.0.0
-        with:
-          name: artifacts
-      - name: Azure WebApp
-        uses: Azure/webapps-deploy@v3.0.8
-        with:
-          app-name: demoapp1212
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
-          package: .
+
           
           
 
