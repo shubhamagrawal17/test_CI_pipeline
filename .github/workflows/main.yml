@@ -43,19 +43,6 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm run lint
-  deploy:
-    runs-on: ubuntu-22.04
-    needs: lint
-    steps:
-    - uses: actions/download-artifact@v7.0.0
-      with:
-        name: artifacts
-    - name: Azure WebApp
-      uses: Azure/webapps-deploy@v3.0.7
-      with:
-        app-name: demoapp211
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
-        package: .
       
         
     
