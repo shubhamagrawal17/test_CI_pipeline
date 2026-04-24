@@ -50,6 +50,7 @@ jobs:
       - uses: actions/download-artifact@v7.0.0
         with:
           name: artifacts
+          path:  dist
       - name: Azure WebApp
         uses: Azure/webapps-deploy@v3.0.8
         with:
