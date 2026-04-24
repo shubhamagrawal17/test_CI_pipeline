@@ -13,14 +13,12 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      - run: mkdir build_artifacts
-      - run: mv node_modules build_artifacts
-      - run: cp package.json build_artifacts
-      - run: cp -r dist build_artifacts
+      - run: mv node_modules dist/
+      - run: cp package.json dist/
       - uses: actions/upload-artifact@v7.0.1
         with:
           name: artifacts
-          path: build_artifacts
+          path: dist
   test-job:
     runs-on: ubuntu-22.04
     needs: build-stage
