@@ -1,7 +1,7 @@
 name: CI Pipeline Demo
-on: 
-  push:
-    branches: ["main"]
+on:  workflow_dispatch
+  #push:
+    #branches: ["main"]
 jobs:
   build-job:
     runs-on: ubuntu-22.04
@@ -50,13 +50,12 @@ jobs:
       - uses: actions/download-artifact@v7.0.0
         with:
           name: artifacts
-          path:  dist
       - name: Azure WebApp
         uses: Azure/webapps-deploy@v3.0.8
         with:
           app-name: demoapp1212
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
-          package: dist
+          package: .
           
           
 
