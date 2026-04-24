@@ -17,8 +17,8 @@ jobs:
       - run: cp package.json build_artifacts/
       - uses: actions/upload-artifact@v7.0.1
         with:
-          name: build_artifacts
-          path: dist
+          name: artifacts
+          path: build_artifacts
   test-job:
     runs-on: ubuntu-22.04
     needs: build-stage
